@@ -13,16 +13,21 @@ int main()
 {
   Polygon_2 poly ;
 
-  if (false) {
-  poly.push_back( Point(-1,-1) ) ;
-  poly.push_back( Point(0,-12) ) ;
-  poly.push_back( Point(1,-1) ) ;
-  poly.push_back( Point(12,0) ) ;
-  poly.push_back( Point(1,1) ) ;
-  poly.push_back( Point(0,12) ) ;
-  poly.push_back( Point(-1,1) ) ;
-  poly.push_back( Point(-12,0) ) ;
-  } else {
+  int k = 2;
+  if (k==0) {
+      poly.push_back( Point(-2,-1) ) ;
+      poly.push_back( Point(2,-1) ) ;
+      poly.push_back( Point(2,1) ) ;
+      poly.push_back( Point(-2,1) ) ;
+  } else if (k==1) {
+      poly.push_back( Point(-5,-1) ) ;
+      poly.push_back( Point(5,-1) ) ;
+      poly.push_back( Point(5, 1) ) ;
+      poly.push_back( Point(1, 1) ) ;
+      poly.push_back( Point(0, 0) ) ;
+      poly.push_back( Point(-1, 1) ) ;
+      poly.push_back( Point(-5, 1) ) ;
+} else {
 poly.push_back(Point(4.13124,0.100418));
 poly.push_back(Point(4.71887,-0.00509644));
 poly.push_back(Point(5.22809,-0.180969));
@@ -148,12 +153,18 @@ poly.reverse_orientation();
 
 
   
+  
+
   SsPtr ass = CGAL::create_interior_straight_skeleton_2(poly);
+  
   
   //double lMaxOffset = 5 ;
   //SsPtr ass = CGAL::create_exterior_straight_skeleton_2(lMaxOffset, poly);
   
-  // Or you can pass the polygon directly, as below.
-  print_off_straight_skeleton(*ass);
+  //print_straight_skeleton(*ass);
+  
+  //print_off_straight_skeleton(*ass);
+  
+  test9(*ass, 0.125);
   return 0;
 }
